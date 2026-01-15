@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: weather-proxy-config
+  labels:
+    app: weather-proxy
+data:
+  WEATHER_OPEN_METEO_BASE_URL: "https://api.open-meteo.com/v1"
+  WEATHER_OPEN_METEO_TIMEOUT_MS: "1000"
+  WEATHER_OPEN_METEO_RETRY_MAX_ATTEMPTS: "2"
+  WEATHER_OPEN_METEO_RETRY_DELAY_MS: "100"
+  WEATHER_CACHE_TTL_SECONDS: "60"
+  WEATHER_CACHE_COORDINATE_PRECISION: "2"
+  SPRING_PROFILES_ACTIVE: "prod"
