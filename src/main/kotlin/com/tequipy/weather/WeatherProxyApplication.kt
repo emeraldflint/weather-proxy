@@ -10,8 +10,8 @@ import org.springframework.resilience.annotation.EnableResilientMethods
 @ConfigurationPropertiesScan
 @EnableCaching
 @EnableResilientMethods
-class TemperatureProxyApplication
+class WeatherProxyApplication
 
 fun main(args: Array<String>) {
-    runApplication<TemperatureProxyApplication>(*args)
+    runApplication<WeatherProxyApplication>(*args)
 }
