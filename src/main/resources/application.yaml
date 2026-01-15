@@ -1,0 +1,50 @@
+spring:
+  application:
+    name: weather-proxy
+
+server:
+  port: 8080
+  shutdown: graceful
+
+weather:
+  open-meteo:
+    base-url: https://api.open-meteo.com/v1
+    timeout-ms: 1000
+    retry:
+      max-attempts: 2
+      delay-ms: 100
+  cache:
+    ttl-seconds: 60
+    coordinate-precision: 2
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: method
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus,caches
+  endpoint:
+    health:
+      show-details: always
+      probes:
+        enabled: true
+  health:
+    defaults:
+      enabled: true
+  metrics:
+    tags:
+      application: ${spring.application.name}
+    distribution:
+      percentiles-histogram:
+        http.server.requests: true
+        openmeteo.request: true
+
+logging:
+  level:
+    com.tequipy.weather: INFO
